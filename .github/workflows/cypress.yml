@@ -24,16 +24,9 @@ jobs:
           
     - name: Run cypress tests
       run: npm run test:chrome
-      continue-on-error: false
         
     - name: Merge test reports
       run: npm run test:merge-report
       
     - name: Generate HTML report
-      run: pm run test:html-report
-      
-    - name: Deploy report page to github
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./public
+      run: npm run test:html-report
