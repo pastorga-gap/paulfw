@@ -24,6 +24,12 @@ jobs:
           
     - name: Run cypress tests
       run: npm run test:chrome
+    
+    - name: Copy test execution videos and screeshots
+      run:
+        mkdir public
+        cp -r cypress/videos public/videos
+        cp -r cypress/screenshots public/screeshots
         
     - name: Merge test reports
       run: npm run test:merge-report
@@ -31,8 +37,8 @@ jobs:
     - name: Generate HTML report
       run: npm run test:html-report
       
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v2.3.1
+    - name: Deploy report page to github
+      uses: peaceiris/actions-gh-pages@v3
       with:
-        name: artifact-html-result
-        path: results/
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public
