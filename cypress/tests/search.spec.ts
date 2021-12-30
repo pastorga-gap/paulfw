@@ -6,7 +6,7 @@ import {ProductDetailPage} from '../page-objects/pages/product-detail';
 import {SearchResultsPage} from '../page-objects/pages/search-results';
 import {HomePage} from '../page-objects/pages/home';
 
-describe('Search page tests', () => {
+describe.skip('Search page tests', () => {
   beforeEach(() => {
     HomePage.navigate();
   });

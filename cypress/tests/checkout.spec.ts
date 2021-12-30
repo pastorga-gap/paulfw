@@ -6,7 +6,7 @@ import {CheckoutPage} from '../page-objects/pages/checkout';
 import {OrderPage} from '../page-objects/pages/order';
 import {Common} from '../page-objects/common';
 
-describe('Checkout page tests', () => {
+describe.skip('Checkout page tests', () => {
   before(()=>{
     HomePage.navigate();
   });
@@ -20,7 +20,7 @@ describe('Checkout page tests', () => {
     CheckoutPage.skipDifferentShippingAddress();
     CheckoutPage.acceptTerms();
     CheckoutPage.placeOrder();
-    
+
     OrderPage.elements.getOrderTitle().should('contain.text', 'Order received');
     OrderPage.elements.getThankYouMessage().should('contain.text', 'Thank you. Your order has been received.');
     cy.url().should('include', OrderPage.url);
